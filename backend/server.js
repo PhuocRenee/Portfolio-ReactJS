@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, "../frontend/public")));
+// app.use(express.static(path.join(__dirname, "../frontend/public")));
 
 // // yup validation
 const schema1 = yup.object({
@@ -88,7 +88,7 @@ app.post("/send", confirm(), validate(schema1), function (req, res) {
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname + "/../frontend/build/index.html"));
 // });
-app.use("*", express.static(path.join(__dirname, "../frontend/build")));
+// app.use("/static", express.static(path.join(__dirname, "public")));
 
 const port = 4000;
 app.listen(process.env.PORT || port, () =>
