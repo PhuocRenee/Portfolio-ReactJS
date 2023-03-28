@@ -3,26 +3,11 @@ import React, { useEffect, useState } from "react";
 import { octokit } from "../../utilities/octokit";
 import ProjectCard from "./ProjectCard";
 import { Info } from "../About/DeveloperData";
-// import useMediaQuery from "../../utilities/useMediaQuery";
+import useMediaQuery from "../../utilities/useMediaQuery";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
-
-  // const projects = [
-  //   {
-  //     name: "Portfolio-NextJs",
-  //     homepage: "https://test.com",
-  //     html_url: "https://test.com",
-  //   },
-  //   {
-  //     name: "Portfolio-Angular",
-  //     homepage: "https://test.com",
-  //     html_url: "https://test.com",
-  //   },
-  // ];
-
-  // const smallView = useMediaQuery(0, "480px");
-
+  const smallView = useMediaQuery(0, "480px");
   const getProjects = async () => {
     try {
       const list = await octokit.request("GET /orgs/PhuocRenee/repos", {});
@@ -51,8 +36,8 @@ export default function Projects() {
           </CardContent>
         </Card>
         <Container
-          // variant={smallView ? "column" : "row"}
-          variant="row"
+          variant={smallView ? "column" : "row"}
+          // variant="row"
           sx={{ mb: "1rem" }}
         >
           {projects
