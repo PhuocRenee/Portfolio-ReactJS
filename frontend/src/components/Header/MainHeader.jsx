@@ -1,19 +1,19 @@
 import React from "react";
 import { Typography, Box, Chip, Avatar, Stack } from "@mui/material";
-import useMediaQuery from "../../utilities/useMediaQuery";
+// import useMediaQuery from "../../utilities/useMediaQuery";
 import { ToolData } from "./ToolData";
 
 export default function MainHeader() {
-  const smallView = useMediaQuery(0, "480px");
-  const mediumView = useMediaQuery("480px", "1180px");
-  const largeView = useMediaQuery("1180px", "1660px");
-  const logoHeight = smallView
-    ? "13vmin"
-    : mediumView
-    ? "15vmin"
-    : largeView
-    ? "19vmin"
-    : "30vmin";
+  // const smallView = useMediaQuery(0, "480px");
+  // const mediumView = useMediaQuery("480px", "1180px");
+  // const largeView = useMediaQuery("1180px", "1660px");
+  // const logoHeight = smallView
+  //   ? "13vmin"
+  //   : mediumView
+  //   ? "15vmin"
+  //   : largeView
+  //   ? "19vmin"
+  //   : "30vmin";
   return (
     <section id="Home">
       <Box
@@ -24,25 +24,28 @@ export default function MainHeader() {
       >
         <Typography
           variant="h1"
-          sx={{
-            ...(smallView && { fontSize: "3rem" }),
-            ...(mediumView && { fontSize: "5rem" }),
-            ...(largeView && { fontSize: "8rem" }),
-          }}
+          sx={
+            {
+              // ...(smallView && { fontSize: "3rem" }),
+              // ...(mediumView && { fontSize: "5rem" }),
+              // ...(largeView && { fontSize: "8rem" }),
+            }
+          }
         >
           This page was built using
         </Typography>
         <Box
           sx={{
             marginTop: "-50px",
-            ...(largeView && { marginTop: "-20px" }),
-            ...(smallView && { marginTop: "10px" }),
+            // ...(largeView && { marginTop: "-20px" }),
+            // ...(smallView && { marginTop: "10px" }),
           }}
         >
           <img
             src="/images/React_logo.gif"
             style={{
-              height: logoHeight,
+              // height: logoHeight,
+              height: "30vmin",
               float: "right",
             }}
             alt="React logo"
