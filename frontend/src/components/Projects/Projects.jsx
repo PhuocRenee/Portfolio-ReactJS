@@ -1,6 +1,5 @@
 import { Typography, Container, Card, CardContent } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { octokit } from "../../utilities/octokit";
 import ProjectCard from "./ProjectCard";
 import { Info } from "../About/DeveloperData";
 import useMediaQuery from "../../utilities/useMediaQuery";
