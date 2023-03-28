@@ -85,9 +85,10 @@ app.post("/send", confirm(), validate(schema1), function (req, res) {
 });
 
 // AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../frontend/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/../frontend/build/index.html"));
+// });
+app.use("*", express.static(path.join(__dirname, "../frontend/build")));
 
 const port = 4000;
 app.listen(process.env.PORT || port, () =>
