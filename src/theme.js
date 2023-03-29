@@ -94,7 +94,8 @@ export const theme = createTheme({
       styleOverrides: {
         img: sx({
           objectFit: "contain",
-          margin: "4px",
+          width: "80%",
+          height: "80%",
         }),
       },
     },
