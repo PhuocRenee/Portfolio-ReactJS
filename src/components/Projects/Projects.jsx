@@ -1,27 +1,28 @@
 import { Typography, Container, Card, CardContent } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { octokit } from "../../utilities/octokit";
+// import React, { useEffect, useState } from "react";
+// import { octokit } from "../../utilities/octokit";
 import ProjectCard from "./ProjectCard";
 import { Info } from "../About/DeveloperData";
+import { ProjectData } from "./ProjectData";
 import useMediaQuery from "../../utilities/useMediaQuery";
 
 export default function Projects() {
-  const [projects, setProjects] = useState([]);
+  // const [projects, setProjects] = useState([]);
   const smallView = useMediaQuery(0, "480px");
-  const getProjects = async () => {
-    try {
-      const list = await octokit.request("GET /orgs/PhuocRenee/repos", {});
-      console.log(list.data);
-      setProjects(list.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const getProjects = async () => {
+  //   try {
+  //     const list = await octokit.request("GET /orgs/PhuocRenee/repos", {});
+  //     console.log(list.data);
+  //     setProjects(list.data);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    console.log("hi");
-    getProjects();
-  }, []);
+  // useEffect(() => {
+  //   console.log("hi");
+  //   getProjects();
+  // }, []);
 
   return (
     <section id="Projects" style={{ backgroundColor: "#8691AE" }}>
@@ -40,11 +41,11 @@ export default function Projects() {
           // variant="row"
           sx={{ mb: "1rem" }}
         >
-          {projects
-            .filter((project) => !project.name.includes("React"))
-            .map((project, index) => (
-              <ProjectCard data={project} key={index} />
-            ))}
+          {ProjectData.filter(
+            (project) => !project.title.includes("React")
+          ).map((project, index) => (
+            <ProjectCard data={project} key={index} />
+          ))}
         </Container>
       </Container>
     </section>

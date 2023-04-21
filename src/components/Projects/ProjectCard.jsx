@@ -8,7 +8,8 @@ import {
 } from "@mui/material";
 
 const ProjectCard = ({ data }) => {
-  const frameworkName = data.name.replace("Portfolio-", "");
+  // const frameworkName = data.name.replace("Portfolio-", "");
+  const frameworkName = data.title;
   return (
     <Card variant="project">
       <CardMedia
@@ -30,7 +31,7 @@ const ProjectCard = ({ data }) => {
         <Button
           variant="project-card"
           onClick={() => {
-            window.open(data.homepage);
+            window.open(data.live);
           }}
         >
           LIVE
@@ -38,7 +39,7 @@ const ProjectCard = ({ data }) => {
         <Button
           variant="project-card"
           onClick={() => {
-            window.open(data.html_url);
+            window.open(data.git);
           }}
         >
           REPO
