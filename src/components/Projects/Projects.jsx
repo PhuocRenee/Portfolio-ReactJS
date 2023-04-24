@@ -1,28 +1,28 @@
-import { Typography, Container, Card, CardContent } from "@mui/material";
-// import React, { useEffect, useState } from "react";
-// import { octokit } from "../../utilities/octokit";
+import { Typography, Container, Card, CardContent, Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { octokit } from "../../utilities/octokit";
 import ProjectCard from "./ProjectCard";
 import { Info } from "../About/DeveloperData";
-import { ProjectData } from "./ProjectData";
+// import { ProjectData } from "./ProjectData";
 import useMediaQuery from "../../utilities/useMediaQuery";
 
 export default function Projects() {
-  // const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
   const smallView = useMediaQuery(0, "480px");
-  // const getProjects = async () => {
-  //   try {
-  //     const list = await octokit.request("GET /orgs/PhuocRenee/repos", {});
-  //     console.log(list.data);
-  //     setProjects(list.data);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  const mediumView = useMediaQuery(0, "770px");
+  const getProjects = async () => {
+    try {
+      const list = await octokit.request("GET /orgs/PhuocRenee/repos", {});
+      console.log(list.data);
+      setProjects(list.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  // useEffect(() => {
-  //   console.log("hi");
-  //   getProjects();
-  // }, []);
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   return (
     <section id="Projects" style={{ backgroundColor: "#8691AE" }}>
@@ -30,22 +30,30 @@ export default function Projects() {
         <Typography variant="h5">
           VIEW THE OTHER VERSIONS OF THIS PAGE
         </Typography>
-        <Card variant="about-project" sx={{ mx: "8%" }}>
-          <CardContent sx={{ px: 10 }}>
-            <Typography variant="h6">{Info.header}</Typography>
-            <Typography variant="paragraph">{Info.text}</Typography>
+        <Card variant="about-project" sx={{ ...(!smallView && { mx: "8%" }) }}>
+          <CardContent
+            sx={{ px: 3, textAlign: "justify", ...(!smallView && { px: 10 }) }}
+          >
+            <Typography variant="h6" sx={{ pt: 0, pb: 1 }}>
+              {Info.header}
+            </Typography>
+            <Typography variant="paragraph" sx={{ textAlign: "justify" }}>
+              {Info.text}
+            </Typography>
           </CardContent>
         </Card>
         <Container
-          variant={smallView ? "column" : "row"}
+          variant={mediumView ? "column" : "row"}
           // variant="row"
           sx={{ mb: "1rem" }}
         >
-          {ProjectData.filter(
-            (project) => !project.title.includes("React")
-          ).map((project, index) => (
-            <ProjectCard data={project} key={index} />
-          ))}
+          {projects
+            .filter((project) => !project.name.includes("React"))
+            .map((project, index) => (
+              <Box key={index} sx={{ ...(mediumView && { mb: 2 }) }}>
+                <ProjectCard data={project} />
+              </Box>
+            ))}
         </Container>
       </Container>
     </section>

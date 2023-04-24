@@ -16,7 +16,7 @@ const schema = yup
     firstName: yup
       .string()
       .min(3, "Please, enter a valid name")
-      .max(15)
+      .max(20)
       .required(),
     email: yup.string().email().required(),
     message: yup.string().required(),

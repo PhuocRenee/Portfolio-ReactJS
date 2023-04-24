@@ -9,11 +9,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import useMediaQuery from "../../utilities/useMediaQuery";
 
 const anchors = ["Home", "Projects", "About", "Contact"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const smallView = useMediaQuery(0, "960px");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -26,7 +28,7 @@ const Navbar = () => {
   return (
     <AppBar position="sticky" color="transparent">
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ mx: "8%" }}>
+        <Toolbar disableGutters sx={{ ...(!smallView && { mx: "8%" }) }}>
           <Typography
             // variant="h5"
             noWrap
@@ -84,7 +86,7 @@ const Navbar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "white" }} />
             </IconButton>
             <Menu
               id="menu-appbar"

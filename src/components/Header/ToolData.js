@@ -6,6 +6,7 @@ const ToolData = [
   { name: "Figma", image: "/images/figma_logo.svg" },
   { name: "MUI", image: "/images/mui_logo.svg" },
   { name: "NodeMailer", image: "/images/nodemailer_logo.png" },
+  { name: "Docker", image: "/images/docker_logo.png" },
 ];
 
 export { ToolData };

@@ -7,14 +7,16 @@ const AboutCard = ({ developer, index }) => {
       variant="row"
       sx={{
         justifyContent: "space-between",
+        gap: "20px",
         ...(!isEven(index) && { flexDirection: "row-reverse" }),
       }}
     >
-      <Card variant="about-image">
+      <Card variant="about-image" sx={{ width: "140px", pt: "0" }}>
         <CardMedia
-          sx={{ objectFit: "contain" }}
+          sx={{ objectFit: "cover", overflow: "hidden" }}
           component="img"
-          height="140"
+          height="140px"
+          width="140px"
           image={developer.image}
         ></CardMedia>
         <Typography variant="h6">{developer.name}</Typography>

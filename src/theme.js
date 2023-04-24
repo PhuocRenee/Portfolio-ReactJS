@@ -59,8 +59,6 @@ export const theme = createTheme({
       textDecoration: "none",
       fontSize: "10rem",
       position: "relative",
-      textAlign: "justify",
-      textJustify: "inter-word",
     },
   },
   components: {
@@ -83,7 +81,11 @@ export const theme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: sx({
-          transform: "scale(1.3)",
+          transform: "scale(0.85)",
+          // eslint-disable-next-line
+          ["@media (min-width:920px)"]: {
+            transform: "scale(1.3)",
+          },
         }),
         avatar: sx({
           backgroundColor: "white",
@@ -94,9 +96,14 @@ export const theme = createTheme({
       styleOverrides: {
         img: sx({
           objectFit: "contain",
-          width: "80%",
-          height: "80%",
+          width: "70%",
+          height: "70%",
         }),
+      },
+    },
+    MuiStack: {
+      defaultProps: {
+        useFlexGap: true,
       },
     },
     MuiContainer: {

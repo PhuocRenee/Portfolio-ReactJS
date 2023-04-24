@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 
 const ProjectCard = ({ data }) => {
-  // const frameworkName = data.name.replace("Portfolio-", "");
-  const frameworkName = data.title;
+  const frameworkName = data.name.replace("Portfolio-", "");
+  // const frameworkName = data.title;
   return (
     <Card variant="project">
       <CardMedia
@@ -18,6 +18,9 @@ const ProjectCard = ({ data }) => {
         height="140"
         image={`/images/${frameworkName.toLowerCase()}.svg`}
         alt={`${frameworkName} logo`}
+        onClick={() => {
+          window.open(data.live);
+        }}
       ></CardMedia>
       <Divider variant="middle" sx={{ paddingTop: 2, borderBottomWidth: 3 }} />
       <Typography variant="h6">{frameworkName}</Typography>
@@ -31,7 +34,7 @@ const ProjectCard = ({ data }) => {
         <Button
           variant="project-card"
           onClick={() => {
-            window.open(data.live);
+            window.open(data.homepage);
           }}
         >
           LIVE
@@ -39,7 +42,7 @@ const ProjectCard = ({ data }) => {
         <Button
           variant="project-card"
           onClick={() => {
-            window.open(data.git);
+            window.open(data.html_url);
           }}
         >
           REPO
